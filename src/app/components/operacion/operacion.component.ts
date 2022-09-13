@@ -56,6 +56,8 @@ export class OperacionComponent implements OnChanges {
       serie:      this.serie
     };
 
+    console.log(`Resultado: ${this.serie} = 2triangular(${this.tringular}+1) - 2primo(${this.primo}) + fibonacci(${this.fibonacci}+1)`);
+    
     return this.serie;
   }
 

@@ -1,11 +1,16 @@
-<div>
+<div class="py-2">
     <form (ngSubmit)="verSerie()">
-      Ingrese el número:
-      <input
-        type="number"
-        [(ngModel)]="numeroIn"
-        name="numeroIn"
-        placeholder="Número">
-      <button type="submit">Ver serie</button>
+        <div class="form-group">
+            <label for="numeroTermino">Ingrese el número termino:</label>
+            <input
+                type="number"
+                class="form-control form-control-sm"
+                id="numeroTermino"
+                [(ngModel)]="numeroIn"
+                name="numeroIn"
+                placeholder="Número"
+            >
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm btn-block">Resolver</button>
     </form>
-  </div>
+</div>

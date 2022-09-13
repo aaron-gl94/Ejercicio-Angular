@@ -1,10 +1,16 @@
-<h1>{{title}}</h1>
-<hr>
-
-<app-formulario [numeroIn]="numero" (numeroOut)="numero=$event"></app-formulario>
-<hr>
-
-<app-operacion [numero]="numero" (onResults)="myResults.setResults($event)"></app-operacion>
-<hr>
-
-<app-resultado #myResults></app-resultado>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 py-5">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">{{title}}</h5>
+        </div>
+        <div class="card-body">
+          <app-formulario [numeroIn]="numero" (numeroOut)="numero=$event"></app-formulario>
+          <app-operacion [numero]="numero" (onResults)="myResults.setResults($event)"></app-operacion>
+          <app-resultado #myResults></app-resultado>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
