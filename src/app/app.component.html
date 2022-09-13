@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<hr>
+
+<app-formulario [numeroIn]="numero" (numeroOut)="numero=$event"></app-formulario>
+<hr>
+
+<app-operacion [numero]="numero" (onResults)="myResults.setResults($event)"></app-operacion>
+<hr>
+
+<app-resultado #myResults></app-resultado>
