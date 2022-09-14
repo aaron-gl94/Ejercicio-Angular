@@ -34,7 +34,7 @@ export class OperacionComponent implements OnChanges {
             return false;
         }
 
-        for (var i = 2; i <= numero - 1; i++) {
+        for (let i = 2; i <= numero - 1; i++) {
             if (numero % i == 0) {
                 return false;
             }
@@ -54,7 +54,7 @@ export class OperacionComponent implements OnChanges {
 
   private getFibonacci (termino: number): any {
     let a = 0, b = 1, c = 0;
-    
+
     if (termino === 1) {
       return 1;
     }
