@@ -53,19 +53,19 @@ export class OperacionComponent implements OnChanges {
   }
 
   private getFibonacci (termino: number): any {
-    let a = 0, b = 1, c = 0;
+    let auxA = 0, auxB = 1, numeroFibonacci = 0;
 
     if (termino === 1) {
       return 1;
     }
 
     for (let i = 0; i < termino - 1; i++) {
-      c = a + b;
-      a = b;
-      b = c;
+      numeroFibonacci = auxA + auxB;
+      auxA = auxB;
+      auxB = numeroFibonacci;
     }
 
-    return c;
+    return numeroFibonacci;
   }
 
   resolverSerie(termino: number) {
