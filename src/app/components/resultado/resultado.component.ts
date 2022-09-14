@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Iresults } from '../interfaces/Iresults';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-resultado',
@@ -9,13 +8,7 @@ import { Iresults } from '../interfaces/Iresults';
 export class ResultadoComponent {
   serie: number | undefined;
 
-  // results: Iresults = {} as Iresults;
-  /* setResults(results: Iresults) {
-    this.results = results;
-  } */
-
-
-  setResults(results: number) {
-    this.serie = results;
+  setResults(result: number) {
+    this.serie = result;
   }
 }

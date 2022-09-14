@@ -11,8 +11,8 @@ export class FormularioComponent {
   @Output('numeroOut') numeroChange = new EventEmitter();
 
   verSerie() {
-    if (this.numeroIn < 0 || this.numeroIn > 9) {
-      alert('- Solo se permiten números del 0 al 9.')
+    if (this.numeroIn < 0) {
+      alert('- Debe Ingresar un numero mayor a "0".')
       return;
     }
 

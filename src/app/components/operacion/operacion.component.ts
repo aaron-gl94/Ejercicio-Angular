@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import { Iresults } from '../interfaces/Iresults';
 
 @Component({
   selector: 'app-operacion',
@@ -11,35 +10,62 @@ export class OperacionComponent implements OnChanges {
   tringular = 0;
   primo     = 0;
   fibonacci = 0;
+
   @Input('numero') numero = 0;
   @Output('onResults') onResults = new EventEmitter();
 
-  results: Iresults = {
-    triangular: this.numero,
-    primo: this.numero,
-    fibonacci: this.numero,
-    serie: this.serie
-  };
 
   private getTringular (termino: number) {
-    let numerosTriangulares = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55];
-    console.log('- numeroTriangular: '+numerosTriangulares[termino]);
+    let numeroTriangular = 0;
     
-    return numerosTriangulares[termino];
+    for (let n = 0; n <= termino; n++) {
+        numeroTriangular = (n * (n + 1)) / 2;
+    }
+
+    return numeroTriangular;
   }
 
   private getPrimo (termino: number) {
-    let numerosPrimos = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
-    console.log('- numeroPrimo: '+numerosPrimos[termino]);
-    
-    return numerosPrimos[termino];
+    let iTermino = 0;
+    let numeroPrimo = 0;
+
+    function validaNumeroPrimo(numero: number) {
+        if (numero < 2) {
+            return false;
+        }
+
+        for (var i = 2; i <= numero - 1; i++) {
+            if (numero % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    for (numeroPrimo; iTermino < termino; numeroPrimo++) {
+        iTermino += (validaNumeroPrimo(numeroPrimo)) ? 1 : 0;
+    }
+
+    numeroPrimo = (numeroPrimo <= 0) ? 0 : numeroPrimo - 1;
+
+    return numeroPrimo;
   }
 
-  private getFibonacci (termino: number) {
-    let numerosFibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-    console.log('- numeroFibonacci: '+numerosFibonacci[termino]);
+  private getFibonacci (termino: number): any {
+    let a = 0, b = 1, c = 0;
     
-    return numerosFibonacci[termino];
+    if (termino === 1) {
+      return 1;
+    }
+
+    for (let i = 0; i < termino - 1; i++) {
+      c = a + b;
+      a = b;
+      b = c;
+    }
+
+    return c;
   }
 
   resolverSerie(termino: number) {
@@ -48,15 +74,6 @@ export class OperacionComponent implements OnChanges {
     this.fibonacci = this.getFibonacci(termino);
 
     this.serie = (2*(this.tringular+1)) - (2*this.primo) + (this.fibonacci+1);
-
-    this.results = {
-      triangular: this.tringular,
-      primo:      this.primo,
-      fibonacci:  this.fibonacci,
-      serie:      this.serie
-    };
-
-    console.log(`Resultado: ${this.serie} = 2triangular(${this.tringular}+1) - 2primo(${this.primo}) + fibonacci(${this.fibonacci}+1)`);
     
     return this.serie;
   }
